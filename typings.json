@@ -1,0 +1,19 @@
+{
+  "name": "bsh-server",
+  "dependencies": {},
+  "globalDependencies": {
+    "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",
+    "bsh-typings": "github:FranzZemen/bsh-typings",
+    "bunyan": "registry:dt/bunyan#0.0.0+20160412155112",
+    "express": "registry:dt/express#4.0.0+20160317120654",
+    "express-serve-static-core": "registry:dt/express-serve-static-core#0.0.0+20160322035842",
+    "lodash": "registry:dt/lodash#3.10.0+20160330154726",
+    "mime": "registry:dt/mime#0.0.0+20160316155526",
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
+    "node": "registry:dt/node#6.0.0+20160514165920",
+    "q": "registry:dt/q#0.0.0+20160417152954",
+    "serve-static": "registry:dt/serve-static#0.0.0+20160501131543",
+    "should": "registry:dt/should#8.1.1+20160316155526",
+    "should-promised": "registry:dt/should-promised#0.0.0+20160316155526"
+  }
+}

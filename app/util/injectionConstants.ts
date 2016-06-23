@@ -1,0 +1,9 @@
+/**
+ * Created by Franz on 5/15/2016.
+ */
+
+const USER_DAO_INJECTION_KEY = 'userDAO';
+const LOGIN_SERVICE_INJECTION_KEY = 'loginService';
+const SECURITY_CONTROLLER_KEY = 'securityController';
+
+export {USER_DAO_INJECTION_KEY,LOGIN_SERVICE_INJECTION_KEY, SECURITY_CONTROLLER_KEY};

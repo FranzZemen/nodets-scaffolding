@@ -1,0 +1,36 @@
+{
+  "name": "nodets-scaffolding",
+  "version": "0.0.1",
+  "description": "Basic Node Typescript Scaffolding",
+  "main": "app/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Franz Zemen <franzzemen@gmail.com> (https://www.linkedin.com/pub/franz-zemen/0/2b5/105)",
+  "license": "MIT",
+  "devDependencies": {
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-copy": "0.0.2",
+    "gulp-debug": "^2.1.2",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.13.6",
+    "jit-grunt": "^0.10.0",
+    "karma": "^0.13.22",
+    "mocha": "^2.4.5",
+    "should": "^8.3.1",
+    "should-promised": "^0.3.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "bsh-mongo-pool": "^1.0.2",
+    "bsh-mongo-token": "0.0.9",
+    "bsh-shared": "0.0.44",
+    "bsh-token": "0.0.4",
+    "bunyan": "^1.8.1",
+    "express": "^4.13.4",
+    "lodash": "^4.11.1",
+    "typings": "^1.0.4"
+  }
+}

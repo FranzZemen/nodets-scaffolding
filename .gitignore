@@ -1,0 +1,7 @@
+.idea
+shared
+node_modules
+server
+typings
+*~
+.tscache
