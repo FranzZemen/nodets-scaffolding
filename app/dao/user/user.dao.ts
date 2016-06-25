@@ -1,17 +1,14 @@
 /**
  * Created by Franz on 5/14/2016.
  */
-/**
- * Created by Franz on 5/13/2016.
- */
 import mongoPool = require('bsh-mongo-pool');
 import Q = require('q');
 import bunyan = require('bunyan');
 import {MongoError} from 'mongodb';
-import {ILoginCredential} from 'bsh-shared/security';
-import {IUser} from 'bsh-shared/model';
 import {IUserDAO} from './iuser.dao.ts';
-import {BaseDAO} from 'bsh-shared/dao';
+import {BaseDAO} from "../BaseDAO";
+import {IUser} from "../../shapes/IUser";
+import {ILoginCredential} from "../../security/ILoginCredential";
 
 let logOptions = {name:'user.dao', level:'info'};
 let log = bunyan.createLogger(logOptions);

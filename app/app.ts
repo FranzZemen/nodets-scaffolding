@@ -3,7 +3,7 @@
  */
 import bunyan = require('bunyan');
 import express = require('express');
-import {Config} from '../config/local.env';
+import {config} from './config/config';
 import mongoPool = require('bsh-mongo-pool');
 import {Db} from "mongodb";
 import {Request} from 'express';
@@ -17,10 +17,12 @@ registerGlobalInjections();
 // Must be imported AFTER injections are registered.
 import topRouter from './routes/topRouter';
 
-let config = new Config(); // Don't pass in a target, let Config decide what environment we're in.
-mongoPool.init(config.mongoURI,{})
+const log = config.getConfiguredLog('app');
+
+
+mongoPool.init(config.env.mongoURI,{})
   .then(function(db:Db) {
-    log.info('Successfully initialized mongo at ' + config.mongoURI);
+    log.info('Successfully initialized mongo at ' + config.env.mongoURI);
   }, function (err) {
     log.error(err.message);
     process.exit(1);
@@ -33,15 +35,16 @@ function logMiddleware(req:Request,res:Response, next:NextFunction) {
   next();
 }
 
-const log = bunyan.createLogger({name: 'app', level: 'info'});
+
+
 let app = express();
 app.use(bodyParser.json());
 app.use(logMiddleware);
 app.use(topRouter);
 
 
-app.listen(config.port,function () {
-  log.info('Server started on ' + config.port);
+app.listen(config.env.port,function () {
+  log.info('Server started on ' + config.env.port);
 });
 
 

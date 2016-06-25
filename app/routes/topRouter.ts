@@ -9,6 +9,6 @@ import someThingRouter from './someThingRouter';
 let topRouter:Router = express.Router();
 
 topRouter.use('/api/security', securityRouter);
-topRouter.use('/api/security', someThingRouter);
+topRouter.use('/api/something', someThingRouter);
 
 export default topRouter;

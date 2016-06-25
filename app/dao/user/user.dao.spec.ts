@@ -1,19 +1,19 @@
 /**
  * Created by Franz on 5/14/2016.
  */
+
 import should = require('should');
 import {UserDAO} from './user.dao';
-import {IUser} from 'bsh-shared/model';
+import {IUser} from './../../shapes/IUser';
 import mongoPool = require('bsh-mongo-pool');
 import Q = require('q');
 import {Db} from 'mongodb';
-import {Config} from '../../../config/local.env';
+import {config} from './../../config/config';
 
-let config = new Config('test');
 let userDAO = new UserDAO();
 
 before(function (done) {
-  mongoPool.init(config.mongoURI, {})
+  mongoPool.init(config.env.mongoURI, {})
     .then(function (db:Db) {
       done();
     }, function (err) {

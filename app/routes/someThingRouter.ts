@@ -3,11 +3,10 @@
  */
 import express = require('express');
 import {Router} from 'express';
-import {listSomeThings,saveEventTemplate} from '../controllers/someThing/someThing.controller';
+import {getSomething} from '../controllers/someThing/someThing.controller';
 
 let someThing:Router = express.Router();
 
-someThing.get('/someThing/:context', listSomeThings);
-someThing.post('/someThing/:context', saveEventTemplate);
+someThing.get('/', getSomething);
 
 export default someThing;

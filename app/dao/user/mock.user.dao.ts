@@ -3,12 +3,14 @@
  * 
  * For use with unit tests from higher level classes.  Provide to the injector in those tests.
  */
+
 import Q = require('q');
-import {ILoginCredential} from 'bsh-shared/security';
-import {RestStatusCodes,StatusedError} from 'bsh-shared/util';
-import {IUser} from 'bsh-shared/model';
+import {ILoginCredential} from '../../security/ILoginCredential';
+import {RestStatusCodes} from '../../util/restStatusCodes';
+import {StatusedError} from '../../util/StatusedError';
+import {IUser} from '../../shapes/IUser';
 import {IUserDAO} from './iuser.dao.ts';
-import {BaseDAO} from 'bsh-shared/dao';
+import {BaseDAO} from "../BaseDAO";
 
 export class MockUserDAO extends BaseDAO<IUser> implements IUserDAO {
   constructor() {

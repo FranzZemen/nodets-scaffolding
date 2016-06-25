@@ -10,24 +10,24 @@ import {Session} from 'bsh-shared/security';
 import bshToken = require('bsh-token');
 import {createToken} from 'bsh-token';
 import bshMongoToken = require ('bsh-mongo-token');
-import {RestStatusCodes,StatusedError} from 'bsh-shared/util';
-import {Config} from '../../config/local.env.sample';
+import {RestStatusCodes} from '../util/restStatusCodes';
+import {StatusedError} from '../util/StatusedError';
 import {Injector} from './../injection/injector';
 import {USER_DAO_INJECTION_KEY} from '../util/injectionConstants';
 import {MockUserDAO} from '../dao/user/mock.user.dao';
 import {LoginService} from './login.service';
+import {config} from '../config/config';
 
+let log = config.getConfiguredLog('login.service.spec.ts');
 
-let log = bunyan.createLogger({name: 'login.service.spec.ts', level:'info'});
 bshToken.implementation(bshMongoToken);
-let config = new Config('test');
 
 const testInjector:Injector = new Injector();
 testInjector.register(USER_DAO_INJECTION_KEY, new MockUserDAO());
 let loginService = testInjector.instantiate(LoginService);
 
 before(function (done) {
-  mongoPool.init(config.mongoURI, {})
+  mongoPool.init(config.env.mongoURI, {})
     .then(function (db:Db) {
       done();
     }, function (err) {

@@ -1,15 +1,18 @@
 /**
  * Created by Franz on 5/13/2016.
  */
+
 import Q = require('q');
 import bunyan = require('bunyan');
-import {IUser} from 'bsh-shared/model';
-import {ILoginCredential, Session} from 'bsh-shared/security';
 import {createToken,checkToken,deleteToken} from 'bsh-token';
-import {RestStatusCodes,StatusedError} from 'bsh-shared/util';
 import {IUserDAO} from '../dao/user/iuser.dao';
 import {USER_DAO_INJECTION_KEY} from "../util/injectionConstants";
 import {inject} from './../injection/inject';
+import {RestStatusCodes} from "../util/restStatusCodes";
+import {StatusedError} from "../util/StatusedError";
+import {ILoginCredential} from "../security/ILoginCredential";
+import {Session} from "../security/Session";
+import {IUser} from "../shapes/IUser";
 
 let logOptions = {name:'login.service', level:'info'};
 let log = bunyan.createLogger(logOptions);

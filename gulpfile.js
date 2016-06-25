@@ -37,7 +37,8 @@ gulp.task('scripts', function () {
 gulp.task('copy', function () {
   return gulp.src(
     [
-      'app/**/*.js'
+      'app/**/*.js',
+      'app/**/*.json'
     ])
     //    .pipe(debug({title:'Copy'}))
     .pipe(copy('./server'));
