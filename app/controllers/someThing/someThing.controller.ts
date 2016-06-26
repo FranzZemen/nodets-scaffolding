@@ -25,8 +25,8 @@ export class SomeThingController {
   getSomething(req:Request, res:Response)  {
     log.debug('getSomething');
     this.somethingService.getSomethig()
-    .then(function (something) {
-      res.status(200).send({something:something});
+    .then(function (data) {
+      res.status(200).send(data);
     }, function (err) {
       res.status(500).send(err.message);
     });

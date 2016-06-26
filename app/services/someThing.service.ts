@@ -19,9 +19,9 @@ export class SomeThingService {
       log.error(err);
       deferred.reject(err);
     });
-    client.get('http://localhost:9090/api/something', function (data, response) {
+    client.get('http://localhost:9090/something', function (data, response) {
       log.debug({data:data});
-      deferred.resolve(data.something);
+      deferred.resolve(data);
     }).on('error', function (err) {
       log.error(err);
       deferred.reject(err);

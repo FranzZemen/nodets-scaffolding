@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 var port = 9090;
 
 app.get('/something', function (req, res) {
-  res.status(200).send('Hello World!!!');
+  res.set('Content-Type','application/json');
+  res.status(200).send({message:'Hello World!!!'});
 });
 
 app.listen(port,function () {

@@ -1,3 +1,14 @@
-/**
- * Created by franzzemen on 6/25/16.
- */
+{
+  "log": {
+    "overrides": [
+      {
+        "name": "Config",
+        "level": "debug"
+      },
+      {
+        "name": "someThing.service",
+        "level": "debug"
+      }
+    ]
+  }
+}

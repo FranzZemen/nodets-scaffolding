@@ -1,0 +1,14 @@
+{
+  "log": {
+    "overrides": [
+      {
+        "name": "Config",
+        "level": "debug"
+      },
+      {
+        "name": "someThing.service",
+        "level": "debug"
+      }
+    ]
+  }
+}

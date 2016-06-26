@@ -29,21 +29,12 @@ class Config {
     port: 9000,
     mongoURI : 'mongodb://localhost/dev',
     log: {
-      defaut: {
-        name: 'willBeReplacedByFramwork',
-        level:'info'
-      },
-      overrides: [
-        {
-          name: 'Config',
-          level: 'debug'
-        }
-      ]
+      defautLevel:'info',
+      overrides: []
     },
     rest: {
       restServer:'',
       services: {
-
       }
     }
   };
@@ -64,7 +55,7 @@ class Config {
         throw err;
       }
     }
-    _.merge(this.env, localEnvConfig);
+    _.merge(this.env,JSON.parse(localEnvConfig));
     this.log = this.getConfiguredLog('Config');
     this.log.debug({envConfig: this.env});
   }
@@ -74,8 +65,7 @@ class Config {
     if (!configuredLog) {
       let bunyanConfig = _.find(this.env.log.overrides, {name:context});
       if (!bunyanConfig) {
-        bunyanConfig = this.env.log.defaut;
-        bunyanConfig.name = context;
+        bunyanConfig = {name: context, level: this.env.log.defautLevel};
       }
       configuredLog = {name:context, log:bunyan.createLogger(bunyanConfig)};
       this.loggers.push(configuredLog);
