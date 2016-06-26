@@ -4,11 +4,16 @@ Basic node typescript scaffoling.  Will evolve over time.
 
 ## Install ##
 
-System uses gulp, typings and bunyan.  You'll need to have those installed globally.
+You'll want the node.js 6.x branche installed as well as the latest mongo database installed and running on a default port.  No database setup
+is necessary although a couple of the unit tests will fail if an appropriate entry isn't already in mongo.
 
+System uses gulp, typings and bunyan, plus mocha as a test framework (although while you can run the tests from the command line, you would normally
+invoke "gulp test".  You'll need to have those installed globally.
+    
     npm install gulp-cli -g
     npm install typings -g
     npm install bunyan -g
+    npm install mocha -g
 
 Clone the project
 
@@ -51,14 +56,17 @@ You should see something like:
 
 ## Features ##
 
-- Typescript MEAN stack
+- Typescript Node Express Mongo stack
 - Gulp build
 - Example routing system
 - Configuration capability with overrides
 - Bunyan based simple logging system
 - Attribute injection system
-- Sample Mongo DAO call
 - Sample node-rest-client call to simulator
+
+## Node Express Mongo Stack ##
+The basic express setup plus a mongo dao doing some simple things are provided.  You can also browse bsh-mongo-token's source to understand
+more mongo examples.
 
 ## Routing ##
 - Express delegates routing to topRouter
@@ -90,5 +98,31 @@ The base configuration is in the Config.env property in the app/config/config.ts
 If the environment parameter NODE_ENV is set to some value <i>node_environment</i> such as "dev", "test", "production" or whatever 
 then the system will search for app/config/env/node_environment.json for example app/config/env/dev.json.  That json file should mirror
 the structure of the base configuration for the properties desired to be overriden.   In no node_environment is set, it will look for dev.json.
-dev.json should 
+dev.json should never be in git.  Instead, developers should copy and modify dev.sample.json to dev.json.  .gitignore settings will cause git to 
+ignore dev.json itself.
 
+You'll note that the starting dev.json as of this version simply contains bunyan log setting overrides for different loggers.  If these are not presesnt
+bunyan logging will use the default log level in the base configuration.
+
+## Bunyan ##
+Bunyan is a great logging system.  It's encouraged to be used for the entire project, but node is so flexibile that you can use anyone you want.
+However, because the log level is set in each file, a minimal bunyanl log manager is written into the config object and you should obtain
+loggers from it rather than directly from bunyan.  This will allow you to set or override logging levels in the configuration rather than in each 
+source file, which becomes important as the project grows.
+
+Read up on the bunyan documentation.  The basic documentation is very straightforward.
+
+## Attribute Based Injection ##
+The project includes an attribute injector.  While technically you don't really need it for basic work, it allows us to easily inject the right
+resource for test purposes.  A few examples are provided.  Later versions will include other types of injections.
+
+The injection "logic" is contained in app/injection, but you'll never need to use that.  For an example of using attribute injection see
+
+     app/services/login.service.ts, LoginService.userDao attribute
+       
+To setup the injection source see app/injection.ts and app/services/login.service.spec.ts.  Both files setup the injections, one the real thing
+for the server, and the other a mock dao for testing the service independent of the database.
+
+## REST client to core REST services ##
+The services/someThing.service.ts file contains the most rudimentary node-rest-client implementation, an assumes the easiest interface to the simulator
+which is an applicatoin/json content type.  As needed we'll add other content types and methods as examples.

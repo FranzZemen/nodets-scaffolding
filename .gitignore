@@ -5,3 +5,4 @@ server
 typings
 *~
 .tscache
+dev.json
