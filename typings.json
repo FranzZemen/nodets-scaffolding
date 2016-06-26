@@ -1,5 +1,5 @@
 {
-  "name": "bsh-server",
+  "name": "nodets-scaffolding",
   "dependencies": {},
   "globalDependencies": {
     "body-parser": "registry:dt/body-parser#0.0.0+20160317120654",

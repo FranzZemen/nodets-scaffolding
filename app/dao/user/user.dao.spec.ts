@@ -23,7 +23,7 @@ before(function (done) {
 
 describe('Get User Tests', function() {
   it('should get user by login', function () {
-    return userDAO.getUserByCredential({username: 'dzemen05@gmail.com', password:'Ohanzee1!'},'security')
+    return userDAO.getUserByCredential({username: 'someone@gmail.com', password:'SomeOne1!'},'security')
       .then(function(user:IUser) {
         should.exist(user);
         (user.username).should.equal('dzemen05@gmail.com');
@@ -31,7 +31,7 @@ describe('Get User Tests', function() {
       });
   });
   it('should not get user by login', function () {
-    return userDAO.getUserByCredential({username: 'dzemen05@gmail.com', password:'Ohanzee1!'},'viteedo1')
+    return userDAO.getUserByCredential({username: 'someone@gmail.com', password:'SomeOne1!'},'viteedo1')
       .then(function(user:IUser) {
         should.not.exist(user);
         return true;

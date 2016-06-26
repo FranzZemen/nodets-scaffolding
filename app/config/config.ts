@@ -33,9 +33,7 @@ class Config {
       overrides: []
     },
     rest: {
-      restServer:'',
-      services: {
-      }
+      url:'http://localhost:9090',
     }
   };
 

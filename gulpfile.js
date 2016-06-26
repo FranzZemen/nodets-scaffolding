@@ -4,6 +4,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var del = require('del');
 var copy = require('gulp-copy');
 var debug = require('gulp-debug');
+var mocha = require('gulp-mocha');
 
 gulp.task('clean', function() {
     del([
